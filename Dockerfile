@@ -16,7 +16,7 @@ RUN \
     #Get Composing
 RUN cd /var/www/Keepstar/ composer install
     # #Change dir ownerships
-    # chown -R www-data:www-data /var/www/Keepstar/
+RUN chown -R www-data:www-data /var/www/Keepstar/
 
     #Set up cron job for checking perms, 
 RUN touch crontab.tmp \
