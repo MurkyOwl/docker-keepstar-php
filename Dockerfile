@@ -14,7 +14,7 @@ RUN apt-get update &&\
 RUN \
     cd /var/www/ && git clone https://github.com/shibdib/Keepstar.git 
     #Get Composing
-RUN cd /var/www/Keepstar/ composer install --no-interaction
+RUN cd /var/www/Keepstar/ composer install -no-scripts --no-dev --no-ansi --no-progress
     # #Change dir ownerships
 RUN chown -R www-data:www-data /var/www/Keepstar/
 
