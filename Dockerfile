@@ -7,17 +7,17 @@ RUN docker-php-source extract \
 
 #install Git and Crontab
 RUN apt-get update &&\
-	apt-get install -y git-core cron
-
+	apt-get install -y git-core cron zip unzip 
 
 #Clone the main build in
 RUN \
     cd /var/www/ && git clone https://github.com/shibdib/Keepstar.git 
+#install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer 
     #Get Composing
-RUN cd /var/www/Keepstar/ composer install -no-scripts --no-dev --no-ansi --no-progress && \
-    composer clear-cache --no-ansi
+RUN cd /var/www/Keepstar/ && composer install --no-scripts --no-dev --no-ansi --no-progress 
     # #Change dir ownerships
-RUN chown -R www-data:www-data /var/www/Keepstar/
+#RUN chown -R www-data:www-data /var/www/Keepstar/
 
     #Set up cron job for checking perms, 
 RUN touch crontab.tmp \
