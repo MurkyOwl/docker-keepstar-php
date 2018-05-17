@@ -16,8 +16,8 @@ RUN \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer 
     #Get Composing
 RUN cd /var/www/Keepstar/ && composer install --no-scripts --no-dev --no-ansi --no-progress 
-    # #Change dir ownerships
-#RUN chown -R www-data:www-data /var/www/Keepstar/
+    #allow anyone to touch Keepstar
+RUN chmod 777 /var/www/Keepstar/
 
     #Set up cron job for checking perms, 
 RUN touch crontab.tmp \
