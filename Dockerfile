@@ -28,8 +28,6 @@ RUN touch crontab.tmp \
 
 # COPY config.php /var/www/keepstar/config/config.php
 
-VOLUME ["/var/www/Keepstar"]
-
 # EXPOSE 80
 
 WORKDIR /var/www/Keepstar
