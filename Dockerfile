@@ -20,25 +20,5 @@ RUN cd /var/www/Keepstar/ && composer install
 RUN chown -Rv www-data:www-data /var/www/Keepstar/
 
 
-    #Set up cron job for checking perms, 
-RUN touch crontab.tmp \
-	&& echo '0 */2 * * * php /var/www/Keepstar/cron.php' > crontab.tmp \
-	&& crontab crontab.tmp \
-    && rm -rf crontab.tmp
-
-#set config file outside to config file inside,
-
-# COPY config.php /var/www/keepstar/config/config.php
-
-# EXPOSE 80
-
 WORKDIR /var/www/Keepstar
 
-# #Change some Apache stuff
-# RUN cd /etc/apache2/sites-enabled/ && rm 000-default.conf && \
-# 	cd /var/www/ rmdir html 
-# COPY keepstar.conf /etc/apache2/sites-enabled/keepstar.conf
-
-
-# #fix weird rewrite .htaccess bug and restart apache
-# RUN a2enmod rewrite && service apache2 restart
